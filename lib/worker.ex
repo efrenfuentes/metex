@@ -25,6 +25,7 @@ defmodule Metex.Worker do
 
   defp compute_temperature(json) do
     try do
+      # subtract 273.15 because the API provides the results in kelvins
       temp = (json["main"]["temp"] - 273.15) |> Float.round(1)
       {:ok, temp}
     rescue
